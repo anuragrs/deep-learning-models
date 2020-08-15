@@ -37,5 +37,3 @@ sagemaker_job=dict(
     output_path='',
 )
 sagemaker_job['output_path']='{}/output/{}'.format(sagemaker_job['s3_path'], sagemaker_job['job_name'])
-
-

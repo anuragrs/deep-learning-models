@@ -428,8 +428,7 @@ class Runner(object):
     def register_logger_hooks(self, log_config):
         log_interval = log_config['interval']
         for info in log_config['hooks']:
-            logger_hook = obj_from_dict(
-                info, hooks, default_args=dict(interval=log_interval))
+            logger_hook = obj_from_dict(info, hooks, default_args=dict(interval=log_interval))
             self.register_hook(logger_hook, priority='VERY_LOW')
 
 

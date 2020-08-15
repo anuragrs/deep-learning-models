@@ -1,7 +1,7 @@
-base_files = ['../../../common/sagemaker_1x8.py',
-              '../../../common/datasets/coco.py',
+base_files = ['../../../common/datasets/coco.py',
               '../../../common/lr_policy.py',
-              '../../../common/runtime.py',]
+              '../../../common/runtime.py',
+             '../../../common/sagemaker_1x8.py']
 
 # model settings
 model = dict(
@@ -61,30 +61,6 @@ model = dict(
         use_smooth_l1=False,
         soft_nms_sigma=0.5
     ),
-)
-
-# log, tensorboard configuration with s3 path for logs
-log_config=dict(
-    _overwrite_=true,
-    interval=50,
-    hooks=[
-        dict(
-            type='textloggerhook'
-        ),
-        dict(
-            type='tensorboardloggerhook',
-            log_dir=none,
-            image_interval=100,
-            s3_dir='{}/tensorboard/{}'.format(sagemaker_job['s3_path'], sagemaker_job['job_name'])
-        ),
-        dict(
-            type='visualizer',
-            dataset_cfg=data['val'],
-            interval=100,
-            top_k=10,
-            run_on_sagemaker=true,
-        ),
-    ]
 )
 
 work_dir = './work_dirs/faster_rcnn_r50v1_d_fpn_1x_coco_sync_bn'

@@ -64,24 +64,24 @@ model = dict(
 
 # log, tensorboard configuration with s3 path for logs
 log_config=dict(
-    _overwrite_=true,
+    _overwrite_=True,
     interval=50,
     hooks=[
         dict(
-            type='textloggerhook'
+            type='TextLoggerHook'
         ),
         dict(
-            type='tensorboardloggerhook',
+            type='TensorboardLoggerHook',
             log_dir=none,
             image_interval=100,
             s3_dir='{}/tensorboard/{}'.format(sagemaker_job['s3_path'], sagemaker_job['job_name'])
         ),
         dict(
-            type='visualizer',
+            type='Visualizer',
             dataset_cfg=data['val'],
             interval=100,
             top_k=10,
-            run_on_sagemaker=true,
+            run_on_sagemaker=True,
         ),
     ]
 )
